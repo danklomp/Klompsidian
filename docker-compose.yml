@@ -1,0 +1,14 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - ./notes:/notes
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - NOTES_PATH=/notes
+    stdin_open: true
+    tty: true

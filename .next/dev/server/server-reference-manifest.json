@@ -1,0 +1,111 @@
+{
+  "node": {
+    "40f9e1557f1188881265eff70fa811fe23452b9b5f": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "getNotes",
+          "filename": "src/lib/notes.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "src/lib/notes.ts",
+      "exportedName": "getNotes"
+    },
+    "40d82ec78e5955c154778e4d6189ffb4c76f99bef4": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "readNote",
+          "filename": "src/lib/notes.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "src/lib/notes.ts",
+      "exportedName": "readNote"
+    },
+    "60f12c776fbc54ab808d8fe70b3d6f97552fdf8f47": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "saveNote",
+          "filename": "src/lib/notes.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "src/lib/notes.ts",
+      "exportedName": "saveNote"
+    },
+    "60f8586d88c1145167d5f81e7ee2783b104f1bfe73": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "createNote",
+          "filename": "src/lib/notes.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "src/lib/notes.ts",
+      "exportedName": "createNote"
+    },
+    "408b935b4be54fc2e8c47c46082fc98afcd991ee46": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "deleteItem",
+          "filename": "src/lib/notes.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "src/lib/notes.ts",
+      "exportedName": "deleteItem"
+    },
+    "60d867e95703a04a1aaf1d6677e9fcbebe0f49dd44": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "createFolder",
+          "filename": "src/lib/notes.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "src/lib/notes.ts",
+      "exportedName": "createFolder"
+    },
+    "601ebb9c6d6596d4267deddf97ed1544802484ef8c": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "moveItem",
+          "filename": "src/lib/notes.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "filename": "src/lib/notes.ts",
+      "exportedName": "moveItem"
+    }
+  },
+  "edge": {},
+  "encryptionKey": "dMPVPby3FwYJqaSrpJtHbr5Qhc5gxm7gAuifWn3sc9s="
+}
