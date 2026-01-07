@@ -37,3 +37,5 @@ next-env.d.ts
 
 # notes data
 /notes
+# environment variables
+.env

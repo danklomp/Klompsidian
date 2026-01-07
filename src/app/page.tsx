@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { FileText, Plus, Save, Sidebar as SidebarIcon, Trash2, Folder, FolderPlus, ChevronRight, ChevronDown, Eye, Edit3, Search, X } from 'lucide-react';
+import { FileText, Plus, Save, Sidebar as SidebarIcon, Trash2, Folder, FolderPlus, ChevronRight, ChevronDown, Eye, Edit3, Search, X, LogOut } from 'lucide-react';
 import { getNotes, readNote, saveNote, createNote, deleteItem, createFolder, moveItem, searchNotes, NoteItem } from '@/lib/notes';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -18,6 +18,11 @@ export default function Home() {
     const [isSaving, setIsSaving] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState<NoteItem[] | null>(null);
+
+    const handleLogout = async () => {
+        await fetch('/api/auth/logout', { method: 'POST' });
+        window.location.href = '/login';
+    };
 
     useEffect(() => {
         refreshNotes();
@@ -217,6 +222,9 @@ export default function Home() {
                         </button>
                         <button onClick={() => handleNewNote()} className="new-note-btn" title="Nieuwe Notitie" style={{ padding: '6px' }}>
                             <Plus size={18} />
+                        </button>
+                        <button onClick={handleLogout} className="new-note-btn" title="Uitloggen" style={{ padding: '6px', background: 'rgba(255, 68, 68, 0.2)', color: '#ff6b6b' }}>
+                            <LogOut size={18} />
                         </button>
                     </div>
                 </div>

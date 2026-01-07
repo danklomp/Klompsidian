@@ -1,12 +1,48 @@
-# Changes
+# Klompsidian - Persoonlijke Notitie Applicatie
 
-* ability to remove notes
-* ability to put notes in folders
-- ability to maximize the formatted preview
-- search bar to search notes
-- check if you can link to parts in the note or link to other notes like obsidian
-* autosave
+Een Obsidian-geïnspireerde notitie applicatie gebouwd met Next.js.
 
-## version history
+## 🚀 Setup
 
-1.1 - autosave
+1. **Clone de repository**
+2. **Installeer dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Configureer environment variabelen:**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Pas `.env` aan en stel je eigen wachtwoord in:
+   ```
+   ADMIN_PASSWORD=jouw_veilige_wachtwoord
+   ```
+
+4. **Start de applicatie:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open in browser:** `http://localhost:3010`
+
+## 🔐 Beveiliging
+
+- De applicatie is beveiligd met een wachtwoord
+- Stel `ADMIN_PASSWORD` in via de `.env` file
+- **Belangrijk:** Commit nooit je `.env` file naar Git!
+
+## 🐳 Docker
+
+```bash
+docker-compose up --build
+```
+
+## 📝 Features
+
+- Markdown editor met live preview
+- Folder structuur met drag & drop
+- Zoekfunctionaliteit
+- Auto-save
+- Wachtwoord beveiliging
