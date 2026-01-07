@@ -8,7 +8,7 @@ module.exports = mod;
 "[project]/src/lib/notes.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-/* __next_internal_action_entry_do_not_use__ [{"4001e58c9c8475b92ab836c3a7d1fb1671ab8ddc1c":"deleteItem","4023ba13b6317b7ae387552f335d55b395caed2679":"readNote","402df0dca6027f3ff4a9db9c7d9b1c7648745db640":"searchNotes","407d06cc5ee6d0734b075403256c654a1bf7223e39":"getNotes","6070b34c2490facdb965d6a0f05b169e3a3fcc7059":"createNote","6086b642a43e13616489bf76e9c7cbea56800a884b":"createFolder","608c855d343aafabb9c03edf00c4539ef8f6ad80f7":"moveItem","6090213f73d14b16922bf75f55acb33baccd1c272b":"saveNote"},"",""] */ __turbopack_context__.s([
+/* __next_internal_action_entry_do_not_use__ [{"408ba9abdbc075507aacf511541d329a4d487e512c":"getNotes","409ff4912b1f5525dc0b1aeebf61c680dc2c8fe9d6":"deleteItem","40cd0ebe9e1c8e3c769a7c9e91a5d439c543aecace":"readNote","40e4b6ed35af7166120647103c55f70fbc61593e68":"searchNotes","6036108e8098216dc489fea168ec37050f29549dc8":"createNote","60a5e1ca4351363640b2a6276e4723b8065709d0b1":"createFolder","60a8d22ec1527a20b39a2519105bab94853e578a22":"saveNote","60c5cd5150eefb995de098092622a7ff0dd37bcd3f":"moveItem"},"",""] */ __turbopack_context__.s([
     "createFolder",
     ()=>createFolder,
     "createNote",
@@ -179,14 +179,14 @@ async function searchNotes(query) {
     moveItem,
     searchNotes
 ]);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getNotes, "407d06cc5ee6d0734b075403256c654a1bf7223e39", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(readNote, "4023ba13b6317b7ae387552f335d55b395caed2679", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(saveNote, "6090213f73d14b16922bf75f55acb33baccd1c272b", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(createNote, "6070b34c2490facdb965d6a0f05b169e3a3fcc7059", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(createFolder, "6086b642a43e13616489bf76e9c7cbea56800a884b", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(deleteItem, "4001e58c9c8475b92ab836c3a7d1fb1671ab8ddc1c", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(moveItem, "608c855d343aafabb9c03edf00c4539ef8f6ad80f7", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(searchNotes, "402df0dca6027f3ff4a9db9c7d9b1c7648745db640", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getNotes, "408ba9abdbc075507aacf511541d329a4d487e512c", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(readNote, "40cd0ebe9e1c8e3c769a7c9e91a5d439c543aecace", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(saveNote, "60a8d22ec1527a20b39a2519105bab94853e578a22", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(createNote, "6036108e8098216dc489fea168ec37050f29549dc8", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(createFolder, "60a5e1ca4351363640b2a6276e4723b8065709d0b1", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(deleteItem, "409ff4912b1f5525dc0b1aeebf61c680dc2c8fe9d6", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(moveItem, "60c5cd5150eefb995de098092622a7ff0dd37bcd3f", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(searchNotes, "40e4b6ed35af7166120647103c55f70fbc61593e68", null);
 }),
 "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript) <locals>", ((__turbopack_context__) => {
 "use strict";
@@ -206,22 +206,22 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$
 "use strict";
 
 __turbopack_context__.s([
-    "4001e58c9c8475b92ab836c3a7d1fb1671ab8ddc1c",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["deleteItem"],
-    "4023ba13b6317b7ae387552f335d55b395caed2679",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["readNote"],
-    "402df0dca6027f3ff4a9db9c7d9b1c7648745db640",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["searchNotes"],
-    "407d06cc5ee6d0734b075403256c654a1bf7223e39",
+    "408ba9abdbc075507aacf511541d329a4d487e512c",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getNotes"],
-    "6070b34c2490facdb965d6a0f05b169e3a3fcc7059",
+    "409ff4912b1f5525dc0b1aeebf61c680dc2c8fe9d6",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["deleteItem"],
+    "40cd0ebe9e1c8e3c769a7c9e91a5d439c543aecace",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["readNote"],
+    "40e4b6ed35af7166120647103c55f70fbc61593e68",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["searchNotes"],
+    "6036108e8098216dc489fea168ec37050f29549dc8",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createNote"],
-    "6086b642a43e13616489bf76e9c7cbea56800a884b",
+    "60a5e1ca4351363640b2a6276e4723b8065709d0b1",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createFolder"],
-    "608c855d343aafabb9c03edf00c4539ef8f6ad80f7",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["moveItem"],
-    "6090213f73d14b16922bf75f55acb33baccd1c272b",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["saveNote"]
+    "60a8d22ec1527a20b39a2519105bab94853e578a22",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["saveNote"],
+    "60c5cd5150eefb995de098092622a7ff0dd37bcd3f",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["moveItem"]
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server$2f$app$2f$page$2f$actions$2e$js__$7b$__ACTIONS_MODULE0__$3d3e$__$225b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$2922$__$7d$__$5b$app$2d$rsc$5d$__$28$server__actions__loader$2c$__ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i('[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => "[project]/src/lib/notes.ts [app-rsc] (ecmascript)" } [app-rsc] (server actions loader, ecmascript) <locals>');
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/notes.ts [app-rsc] (ecmascript)");
