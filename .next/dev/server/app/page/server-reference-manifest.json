@@ -1,6 +1,6 @@
 {
   "node": {
-    "40f9e1557f1188881265eff70fa811fe23452b9b5f": {
+    "407d06cc5ee6d0734b075403256c654a1bf7223e39": {
       "workers": {
         "app/page": {
           "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -15,7 +15,7 @@
       "exportedName": "getNotes",
       "filename": "src/lib/notes.ts"
     },
-    "40d82ec78e5955c154778e4d6189ffb4c76f99bef4": {
+    "4023ba13b6317b7ae387552f335d55b395caed2679": {
       "workers": {
         "app/page": {
           "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -30,7 +30,7 @@
       "exportedName": "readNote",
       "filename": "src/lib/notes.ts"
     },
-    "60f12c776fbc54ab808d8fe70b3d6f97552fdf8f47": {
+    "6090213f73d14b16922bf75f55acb33baccd1c272b": {
       "workers": {
         "app/page": {
           "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -45,7 +45,7 @@
       "exportedName": "saveNote",
       "filename": "src/lib/notes.ts"
     },
-    "60f8586d88c1145167d5f81e7ee2783b104f1bfe73": {
+    "6070b34c2490facdb965d6a0f05b169e3a3fcc7059": {
       "workers": {
         "app/page": {
           "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -60,7 +60,7 @@
       "exportedName": "createNote",
       "filename": "src/lib/notes.ts"
     },
-    "408b935b4be54fc2e8c47c46082fc98afcd991ee46": {
+    "4001e58c9c8475b92ab836c3a7d1fb1671ab8ddc1c": {
       "workers": {
         "app/page": {
           "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -75,7 +75,7 @@
       "exportedName": "deleteItem",
       "filename": "src/lib/notes.ts"
     },
-    "60d867e95703a04a1aaf1d6677e9fcbebe0f49dd44": {
+    "6086b642a43e13616489bf76e9c7cbea56800a884b": {
       "workers": {
         "app/page": {
           "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -90,7 +90,7 @@
       "exportedName": "createFolder",
       "filename": "src/lib/notes.ts"
     },
-    "601ebb9c6d6596d4267deddf97ed1544802484ef8c": {
+    "608c855d343aafabb9c03edf00c4539ef8f6ad80f7": {
       "workers": {
         "app/page": {
           "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -103,6 +103,21 @@
         "app/page": "action-browser"
       },
       "exportedName": "moveItem",
+      "filename": "src/lib/notes.ts"
+    },
+    "402df0dca6027f3ff4a9db9c7d9b1c7648745db640": {
+      "workers": {
+        "app/page": {
+          "moduleId": "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "searchNotes",
+          "filename": "src/lib/notes.ts"
+        }
+      },
+      "layer": {
+        "app/page": "action-browser"
+      },
+      "exportedName": "searchNotes",
       "filename": "src/lib/notes.ts"
     }
   },
