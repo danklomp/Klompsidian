@@ -102,3 +102,37 @@ export async function moveItem(oldPath: string, newParentPath: string) {
     fs.renameSync(sourcePath, destinationPath);
     return { success: true };
 }
+
+export async function searchNotes(query: string): Promise<NoteItem[]> {
+    const results: NoteItem[] = [];
+    const searchInDir = async (dir: string) => {
+        const items = fs.readdirSync(dir, { withFileTypes: true });
+        for (const item of items) {
+            const fullPath = path.join(dir, item.name);
+            const relativePath = path.relative(NOTES_DIR, fullPath);
+
+            if (item.isDirectory()) {
+                await searchInDir(fullPath);
+            } else if (item.name.endsWith('.md')) {
+                const content = fs.readFileSync(fullPath, 'utf-8');
+                const h1Match = content.match(/^#\s+(.+)$/m);
+                const title = h1Match ? h1Match[1].trim() : item.name.replace('.md', '');
+
+                if (
+                    title.toLowerCase().includes(query.toLowerCase()) ||
+                    content.toLowerCase().includes(query.toLowerCase())
+                ) {
+                    results.push({
+                        name: item.name.replace('.md', ''),
+                        title: title,
+                        path: relativePath,
+                        type: 'file',
+                    });
+                }
+            }
+        }
+    };
+
+    await searchInDir(NOTES_DIR);
+    return results;
+}

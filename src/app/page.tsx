@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { FileText, Plus, Save, Sidebar as SidebarIcon, Trash2, Folder, FolderPlus, ChevronRight, ChevronDown, Eye, Edit3 } from 'lucide-react';
-import { getNotes, readNote, saveNote, createNote, deleteItem, createFolder, moveItem, NoteItem } from '@/lib/notes';
+import { FileText, Plus, Save, Sidebar as SidebarIcon, Trash2, Folder, FolderPlus, ChevronRight, ChevronDown, Eye, Edit3, Search, X } from 'lucide-react';
+import { getNotes, readNote, saveNote, createNote, deleteItem, createFolder, moveItem, searchNotes, NoteItem } from '@/lib/notes';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Home() {
@@ -15,10 +15,48 @@ export default function Home() {
     const [draggingPath, setDraggingPath] = useState<string | null>(null);
     const [dropTarget, setDropTarget] = useState<string | null>(null);
     const [viewMode, setViewMode] = useState<'edit' | 'preview'>('edit');
+    const [isSaving, setIsSaving] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [searchResults, setSearchResults] = useState<NoteItem[] | null>(null);
 
     useEffect(() => {
         refreshNotes();
     }, []);
+
+    useEffect(() => {
+        if (!activeNote || viewMode !== 'edit') return;
+
+        const timer = setTimeout(async () => {
+            setIsSaving(true);
+            try {
+                await saveNote(activeNote, content);
+                // We don't necessarily need to refresh notes list on every keystroke save,
+                // but we might want to if titles are based on content (H1)
+                const list = await getNotes();
+                setNotes(list);
+            } catch (error) {
+                console.error('Failed to autosave:', error);
+            } finally {
+                setIsSaving(false);
+            }
+        }, 500); // 500ms debounce
+
+        return () => clearTimeout(timer);
+    }, [content, activeNote, viewMode]);
+
+    useEffect(() => {
+        const handleSearch = async () => {
+            if (searchQuery.trim().length > 1) {
+                const results = await searchNotes(searchQuery);
+                setSearchResults(results);
+            } else {
+                setSearchResults(null);
+            }
+        };
+
+        const timer = setTimeout(handleSearch, 300);
+        return () => clearTimeout(timer);
+    }, [searchQuery]);
 
     const refreshNotes = async () => {
         const list = await getNotes();
@@ -84,6 +122,7 @@ export default function Home() {
     };
 
     const onDragOver = (e: React.DragEvent, path: string, type: string) => {
+        e.stopPropagation();
         if (type === 'folder' && draggingPath !== path && !path.startsWith(draggingPath + '/')) {
             e.preventDefault();
             setDropTarget(path);
@@ -95,6 +134,7 @@ export default function Home() {
 
     const onDrop = async (e: React.DragEvent, targetPath: string) => {
         e.preventDefault();
+        e.stopPropagation();
         const sourcePath = e.dataTransfer.getData('text/plain');
         setDropTarget(null);
         setDraggingPath(null);
@@ -180,8 +220,47 @@ export default function Home() {
                         </button>
                     </div>
                 </div>
+
+                <div style={{ padding: '10px 15px' }}>
+                    <div className="search-container" style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                        <Search size={14} style={{ position: 'absolute', left: '10px', color: '#666' }} />
+                        <input
+                            type="text"
+                            placeholder="Doorzoek notities..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            style={{
+                                width: '100%',
+                                background: 'rgba(255, 255, 255, 0.05)',
+                                border: '1px solid var(--border)',
+                                borderRadius: '6px',
+                                padding: '6px 30px',
+                                fontSize: '0.85rem',
+                                color: 'var(--foreground)',
+                                outline: 'none'
+                            }}
+                        />
+                        {searchQuery && (
+                            <X
+                                size={14}
+                                style={{ position: 'absolute', right: '10px', color: '#666', cursor: 'pointer' }}
+                                onClick={() => setSearchQuery('')}
+                            />
+                        )}
+                    </div>
+                </div>
+
                 <div style={{ flex: 1, overflowY: 'auto', paddingBottom: '20px' }}>
-                    {renderTree(notes)}
+                    {searchResults ? (
+                        <div className="search-results">
+                            <div style={{ padding: '5px 15px', fontSize: '0.7rem', color: '#666', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                                {searchResults.length} resultaten gevonden
+                            </div>
+                            {renderTree(searchResults)}
+                        </div>
+                    ) : (
+                        renderTree(notes)
+                    )}
                 </div>
             </motion.aside>
 
@@ -211,8 +290,22 @@ export default function Home() {
                                         <Eye size={16} />
                                     </button>
                                 </div>
-                                <button onClick={handleSave} className="new-note-btn" style={{ padding: '6px 12px' }}>
-                                    <Save size={16} />
+                                <button
+                                    onClick={handleSave}
+                                    className={`new-note-btn ${isSaving ? 'saving' : ''}`}
+                                    style={{ padding: '6px 12px', minWidth: '40px', display: 'flex', justifyContent: 'center' }}
+                                    disabled={isSaving}
+                                >
+                                    {isSaving ? (
+                                        <motion.div
+                                            animate={{ rotate: 360 }}
+                                            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                        >
+                                            <Save size={16} />
+                                        </motion.div>
+                                    ) : (
+                                        <Save size={16} />
+                                    )}
                                 </button>
                             </>
                         )}

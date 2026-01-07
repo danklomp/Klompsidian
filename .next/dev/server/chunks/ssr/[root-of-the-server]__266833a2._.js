@@ -8,7 +8,7 @@ module.exports = mod;
 "[project]/src/lib/notes.ts [app-rsc] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-/* __next_internal_action_entry_do_not_use__ [{"408b935b4be54fc2e8c47c46082fc98afcd991ee46":"deleteItem","40d82ec78e5955c154778e4d6189ffb4c76f99bef4":"readNote","40f9e1557f1188881265eff70fa811fe23452b9b5f":"getNotes","601ebb9c6d6596d4267deddf97ed1544802484ef8c":"moveItem","60d867e95703a04a1aaf1d6677e9fcbebe0f49dd44":"createFolder","60f12c776fbc54ab808d8fe70b3d6f97552fdf8f47":"saveNote","60f8586d88c1145167d5f81e7ee2783b104f1bfe73":"createNote"},"",""] */ __turbopack_context__.s([
+/* __next_internal_action_entry_do_not_use__ [{"4001e58c9c8475b92ab836c3a7d1fb1671ab8ddc1c":"deleteItem","4023ba13b6317b7ae387552f335d55b395caed2679":"readNote","402df0dca6027f3ff4a9db9c7d9b1c7648745db640":"searchNotes","407d06cc5ee6d0734b075403256c654a1bf7223e39":"getNotes","6070b34c2490facdb965d6a0f05b169e3a3fcc7059":"createNote","6086b642a43e13616489bf76e9c7cbea56800a884b":"createFolder","608c855d343aafabb9c03edf00c4539ef8f6ad80f7":"moveItem","6090213f73d14b16922bf75f55acb33baccd1c272b":"saveNote"},"",""] */ __turbopack_context__.s([
     "createFolder",
     ()=>createFolder,
     "createNote",
@@ -22,7 +22,9 @@ module.exports = mod;
     "readNote",
     ()=>readNote,
     "saveNote",
-    ()=>saveNote
+    ()=>saveNote,
+    "searchNotes",
+    ()=>searchNotes
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/build/webpack/loaders/next-flight-loader/server-reference.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__ = __turbopack_context__.i("[externals]/fs [external] (fs, cjs)");
@@ -137,6 +139,35 @@ async function moveItem(oldPath, newParentPath) {
         success: true
     };
 }
+async function searchNotes(query) {
+    const results = [];
+    const searchInDir = async (dir)=>{
+        const items = __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].readdirSync(dir, {
+            withFileTypes: true
+        });
+        for (const item of items){
+            const fullPath = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].join(dir, item.name);
+            const relativePath = __TURBOPACK__imported__module__$5b$externals$5d2f$path__$5b$external$5d$__$28$path$2c$__cjs$29$__["default"].relative(NOTES_DIR, fullPath);
+            if (item.isDirectory()) {
+                await searchInDir(fullPath);
+            } else if (item.name.endsWith('.md')) {
+                const content = __TURBOPACK__imported__module__$5b$externals$5d2f$fs__$5b$external$5d$__$28$fs$2c$__cjs$29$__["default"].readFileSync(fullPath, 'utf-8');
+                const h1Match = content.match(/^#\s+(.+)$/m);
+                const title = h1Match ? h1Match[1].trim() : item.name.replace('.md', '');
+                if (title.toLowerCase().includes(query.toLowerCase()) || content.toLowerCase().includes(query.toLowerCase())) {
+                    results.push({
+                        name: item.name.replace('.md', ''),
+                        title: title,
+                        path: relativePath,
+                        type: 'file'
+                    });
+                }
+            }
+        }
+    };
+    await searchInDir(NOTES_DIR);
+    return results;
+}
 ;
 (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$action$2d$validate$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["ensureServerEntryExports"])([
     getNotes,
@@ -145,15 +176,17 @@ async function moveItem(oldPath, newParentPath) {
     createNote,
     createFolder,
     deleteItem,
-    moveItem
+    moveItem,
+    searchNotes
 ]);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getNotes, "40f9e1557f1188881265eff70fa811fe23452b9b5f", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(readNote, "40d82ec78e5955c154778e4d6189ffb4c76f99bef4", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(saveNote, "60f12c776fbc54ab808d8fe70b3d6f97552fdf8f47", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(createNote, "60f8586d88c1145167d5f81e7ee2783b104f1bfe73", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(createFolder, "60d867e95703a04a1aaf1d6677e9fcbebe0f49dd44", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(deleteItem, "408b935b4be54fc2e8c47c46082fc98afcd991ee46", null);
-(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(moveItem, "601ebb9c6d6596d4267deddf97ed1544802484ef8c", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(getNotes, "407d06cc5ee6d0734b075403256c654a1bf7223e39", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(readNote, "4023ba13b6317b7ae387552f335d55b395caed2679", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(saveNote, "6090213f73d14b16922bf75f55acb33baccd1c272b", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(createNote, "6070b34c2490facdb965d6a0f05b169e3a3fcc7059", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(createFolder, "6086b642a43e13616489bf76e9c7cbea56800a884b", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(deleteItem, "4001e58c9c8475b92ab836c3a7d1fb1671ab8ddc1c", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(moveItem, "608c855d343aafabb9c03edf00c4539ef8f6ad80f7", null);
+(0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$webpack$2f$loaders$2f$next$2d$flight$2d$loader$2f$server$2d$reference$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["registerServerReference"])(searchNotes, "402df0dca6027f3ff4a9db9c7d9b1c7648745db640", null);
 }),
 "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript) <locals>", ((__turbopack_context__) => {
 "use strict";
@@ -167,25 +200,28 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$
 ;
 ;
 ;
+;
 }),
 "[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/lib/notes.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
-    "408b935b4be54fc2e8c47c46082fc98afcd991ee46",
+    "4001e58c9c8475b92ab836c3a7d1fb1671ab8ddc1c",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["deleteItem"],
-    "40d82ec78e5955c154778e4d6189ffb4c76f99bef4",
+    "4023ba13b6317b7ae387552f335d55b395caed2679",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["readNote"],
-    "40f9e1557f1188881265eff70fa811fe23452b9b5f",
+    "402df0dca6027f3ff4a9db9c7d9b1c7648745db640",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["searchNotes"],
+    "407d06cc5ee6d0734b075403256c654a1bf7223e39",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["getNotes"],
-    "601ebb9c6d6596d4267deddf97ed1544802484ef8c",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["moveItem"],
-    "60d867e95703a04a1aaf1d6677e9fcbebe0f49dd44",
+    "6070b34c2490facdb965d6a0f05b169e3a3fcc7059",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createNote"],
+    "6086b642a43e13616489bf76e9c7cbea56800a884b",
     ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createFolder"],
-    "60f12c776fbc54ab808d8fe70b3d6f97552fdf8f47",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["saveNote"],
-    "60f8586d88c1145167d5f81e7ee2783b104f1bfe73",
-    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["createNote"]
+    "608c855d343aafabb9c03edf00c4539ef8f6ad80f7",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["moveItem"],
+    "6090213f73d14b16922bf75f55acb33baccd1c272b",
+    ()=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["saveNote"]
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f2e$next$2d$internal$2f$server$2f$app$2f$page$2f$actions$2e$js__$7b$__ACTIONS_MODULE0__$3d3e$__$225b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$2922$__$7d$__$5b$app$2d$rsc$5d$__$28$server__actions__loader$2c$__ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i('[project]/.next-internal/server/app/page/actions.js { ACTIONS_MODULE0 => "[project]/src/lib/notes.ts [app-rsc] (ecmascript)" } [app-rsc] (server actions loader, ecmascript) <locals>');
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$notes$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/lib/notes.ts [app-rsc] (ecmascript)");
